@@ -6,17 +6,7 @@ This repository is a collection of beginner-level frontend projects I created to
 
 ## 🧩 Projects Included
 
-### 📌 1. To-Do List App
-A responsive task manager app that allows users to:
-- Add tasks with name, time, and location
-- Mark tasks as completed (with strikethrough effect)
-- Delete tasks individually
-- See real-time success message on task addition
-> Built using HTML, CSS, and vanilla JavaScript. Focused on DOM manipulation and dynamic UI updates.
-
----
-
-### 📌 2. Blog Page Layout – *Pixel Patch Blogs*
+### 📌 1. Blog Page Layout – *Pixel Patch Blogs*
 A clean blog layout displaying cards with:
 - Blog title, image, author info, date, and tag
 - Grid-based responsive design
@@ -25,7 +15,7 @@ A clean blog layout displaying cards with:
 
 ---
 
-### 📌 3. QR Code Card – *Card 1*
+### 📌 2. QR Code Card – *Card 1*
 A minimal QR code component featuring:
 - Centered card layout with image
 - Gradient background and rounded corners
@@ -34,7 +24,7 @@ A minimal QR code component featuring:
 
 ---
 
-### 📌 4. Order Summary Card – *Card 2*
+### 📌 3. Order Summary Card – *Card 2*
 A UI component for a mock payment system showing:
 - Product image and pricing details
 - Interactive buttons (Change Plan, Proceed to Payment)
