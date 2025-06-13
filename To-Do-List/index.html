@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2-DO | Tasks Await You</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="nav-container">
+          <div id="nav-left">
+            <p id="nav-logo">2-DO</p>
+            <div id="nav-items">
+              <a href="#">Home</a>
+              <a href="#">This Week</a>
+              <a href="#">This Month</a>
+            </div>
+          </div>
+
+          <div id="header-icons">
+            <i class="fa-solid fa-user icon"></i>
+            <i class="fa-solid fa-gear icon"></i>
+          </div>
+        </nav>
+      </header>
+
+      <div class="greeting-container">
+        <p id="greet">Hello, <b>User!</b></p>
+      </div>
+
+
+      <div class="no-task-message">
+        <!-- <img src="empty-list.svg" alt="No Tasks" class="no-task-image" /> -->
+        <p class="no-task-text">
+          No tasks yet. Add your first task to get started!
+        </p>
+        <!-- <button class="add-task-btn">+ Add Task</button> -->
+      </div>
+
+      <!-- Task Form -->
+      <div id="task-form-container" class="hidden">
+        <input type="text" id="task-input" placeholder="Task name" />
+        <input type="datetime-local" id="datetime-input" />
+        <input type="text" id="location-input" placeholder="Location" />
+        <button id="add-task-btn">+ Add Task</button>
+      </div>
+
+      <p id="success-message" class="hidden" style="text-align:center; color: green; font-weight: bold; margin-top: 10px;">
+      Task added successfully!
+      </p>
+
+
+      <!-- Tasks Table -->
+      <div class="tasks-container">
+        <table id="task-table">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Date & Time</th>
+              <th>Location</th>
+              <th>Completed</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- New rows will be added here -->
+          </tbody>
+        </table>
+      </div>
+      <script src="main.js"></script>
+  </body>
+</html>

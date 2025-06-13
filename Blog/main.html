@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Exam Portal - Answer Sheet Submission</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+        }
+        
+        header {
+            background-color: #1a3a6d;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav {
+            background-color: #2c5494;
+            padding: 0.8rem 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        nav a.active {
+            font-weight: bold;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .page-title {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card-title {
+            display: flex;
+            align-items: center;
+            color: #1a3a6d;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .card-title .number {
+            background-color: #2c5494;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.8rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .input-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        select, input[type="file"] {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .drag-drop-area {
+            border: 2px dashed #ccc;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        
+        .btn {
+            background-color: #2c5494;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background-color: #1a3a6d;
+        }
+        
+        .status-panel {
+            margin-top: 1rem;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        .status-dot.processing {
+            background-color: #f39c12;
+        }
+        
+        .status-dot.success {
+            background-color: #2ecc71;
+        }
+        
+        .status-dot.error {
+            background-color: #e74c3c;
+        }
+        
+        .workflow-step {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-number {
+            background-color: #2c5494;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .log-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .log-item:last-child {
+            border-bottom: none;
+        }
+        
+        .log-time {
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .success-text {
+            color: #2ecc71;
+        }
+        
+        .error-text {
+            color: #e74c3c;
+        }
+        
+        .pending-text {
+            color: #f39c12;
+        }
+        
+        .chart-container {
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            margin: 1rem 0;
+        }
+        
+        .chart-bar {
+            width: 40px;
+            background-color: #2c5494;
+            position: relative;
+            text-align: center;
+        }
+        
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #555;
+        }
+        
+        .support-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .qr-container {
+            border: 1px solid #ddd;
+            width: 120px;
+            height: 120px;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+        }
+        
+        .qr-code {
+            /* QR Code CSS */
+            display: grid;
+            grid-template-columns: repeat(21, 1fr);
+            grid-template-rows: repeat(21, 1fr);
+            width: 100px;
+            height: 100px;
+        }
+        
+        .qr-code div {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .qr-pixel {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>University Exam Portal</h2>
+        <div>Welcome, Dr. Sharma | <a href="#" style="color: white; text-decoration: none;">Log Out</a></div>
+    </header>
+    
+    <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Exams</a>
+        <a href="#" class="active">Answer Sheet Submission</a>
+        <a href="#">Reports</a>
+        <a href="#">Support</a>
+    </nav>
+    
+    <div class="container">
+        <h1 class="page-title">Post-Exam Answer Sheet Submission</h1>
+        
+        <div class="card">
+            <h2 class="card-title"><span class="number">1</span> Digital Answer Sheet Upload</h2>
+            <div class="grid">
+                <div>
+                    <form>
+                        <div class="input-group">
+                            <label for="exam-select">Select Exam:</label>
+                            <select id="exam-select">
+                                <option>Final Examination - CSE101</option>
+                                <option>Midterm - MTH202</option>
+                                <option>Final Examination - PHY110</option>
+                                <option>Quiz 2 - CHM115</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Answer Sheet Files:</label>
+                            <div class="drag-drop-area">
+                                <p>Drop files here or</p>
+                                <input type="file" multiple>
+                            </div>
+                            <small>Accepted formats: PDF, JPEG (Max 10MB per file)</small>
+                        </div>
+                        
+                        <button class="btn">Upload Files</button>
+                    </form>
+                </div>
+                
+                <div class="status-panel">
+                    <h3>Upload Status</h3>
+                    <div class="status-item">
+                        <span class="status-dot processing"></span>
+                        <span>Validation in progress...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-dot success"></span>
+                        <span>3 files successfully validated</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-dot error"></span>
+                        <span>1 file failed (size limit exceeded)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h2 class="card-title"><span class="number">2</span> Submission Workflow</h2>
+                
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h4>Upload Files</h4>
+                        <p>Submit scanned answer sheets through the secure portal</p>
+                    </div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h4>Automated Validation</h4>
+                        <p>System checks for completeness and file format compliance</p>
+                    </div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h4>Manual Review</h4>
+                        <p>Examination staff verifies submitted answer sheets</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title"><span class="number">3</span> Audit Trail</h2>
+                
+                <div class="log-item">
+                    <span class="log-time">01/04/2025 10:15</span> - Upload by Dr. Sharma
+                </div>
+                
+                <div class="log-item">
+                    <span class="log-time">01/04/2025 10:16</span> - Validation complete
+                </div>
+                
+                <div class="log-item">
+                    <span class="log-time">01/04/2025 10:30</span> - Review by Rajesh <span class="pending-text">(Pending)</span>
+                </div>
+                
+                <div class="log-item">
+                    <span class="log-time">01/04/2025 11:05</span> - <span class="success-text">2 sheets approved</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h2 class="card-title"><span class="number">4</span> Reporting & Analytics</h2>
+                
+                <h4>Answer Sheet Submission Progress</h4>
+                <div class="chart-container">
+                    <div class="chart-bar" style="height: 70%;">
+                        <div class="chart-label">CSE101</div>
+                    </div>
+                    <div class="chart-bar" style="height: 50%;">
+                        <div class="chart-label">MTH202</div>
+                    </div>
+                    <div class="chart-bar" style="height: 90%;">
+                        <div class="chart-label">PHY110</div>
+                    </div>
+                    <div class="chart-bar" style="height: 60%;">
+                        <div class="chart-label">CHM115</div>
+                    </div>
+                    <div class="chart-bar" style="height: 80%;">
+                        <div class="chart-label">BIO103</div>
+                    </div>
+                </div>
+                
+                <button class="btn" style="margin-top: 2rem;">Generate Custom Report</button>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title"><span class="number">5</span> Support & Integration</h2>
+                
+                <div class="support-buttons">
+                    <button class="btn">Report Issue</button>
+                    <button class="btn">Emergency Submission</button>
+                </div>
+                
+                <div style="text-align: center; margin-top: 1rem;">
+                    <p>Offline Submission Option</p>
+                    <div class="qr-container">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                            <!-- QR Code Frame -->
+                            <rect x="0" y="0" width="100" height="100" fill="white"/>
+                            
+                            <!-- Position Detection Patterns (Corners) -->
+                            <!-- Top-left -->
+                            <rect x="5" y="5" width="20" height="20" fill="black"/>
+                            <rect x="10" y="10" width="10" height="10" fill="white"/>
+                            <rect x="12" y="12" width="6" height="6" fill="black"/>
+                            
+                            <!-- Top-right -->
+                            <rect x="75" y="5" width="20" height="20" fill="black"/>
+                            <rect x="80" y="10" width="10" height="10" fill="white"/>
+                            <rect x="82" y="12" width="6" height="6" fill="black"/>
+                            
+                            <!-- Bottom-left -->
+                            <rect x="5" y="75" width="20" height="20" fill="black"/>
+                            <rect x="10" y="80" width="10" height="10" fill="white"/>
+                            <rect x="12" y="82" width="6" height="6" fill="black"/>
+                            
+                            <!-- Timing Patterns -->
+                            <rect x="30" y="5" width="5" height="5" fill="black"/>
+                            <rect x="40" y="5" width="5" height="5" fill="black"/>
+                            <rect x="50" y="5" width="5" height="5" fill="black"/>
+                            <rect x="60" y="5" width="5" height="5" fill="black"/>
+                            
+                            <rect x="5" y="30" width="5" height="5" fill="black"/>
+                            <rect x="5" y="40" width="5" height="5" fill="black"/>
+                            <rect x="5" y="50" width="5" height="5" fill="black"/>
+                            <rect x="5" y="60" width="5" height="5" fill="black"/>
+                            
+                            <!-- QR Code Data (Simplified Pattern) -->
+                            <rect x="35" y="35" width="5" height="5" fill="black"/>
+                            <rect x="45" y="35" width="5" height="5" fill="black"/>
+                            <rect x="55" y="35" width="5" height="5" fill="black"/>
+                            <rect x="65" y="35" width="5" height="5" fill="black"/>
+                            
+                            <rect x="35" y="45" width="5" height="5" fill="black"/>
+                            <rect x="45" y="45" width="5" height="5" fill="black"/>
+                            <rect x="65" y="45" width="5" height="5" fill="black"/>
+                            
+                            <rect x="35" y="55" width="5" height="5" fill="black"/>
+                            <rect x="55" y="55" width="5" height="5" fill="black"/>
+                            <rect x="65" y="55" width="5" height="5" fill="black"/>
+                            
+                            <rect x="40" y="60" width="5" height="5" fill="black"/>
+                            <rect x="50" y="60" width="5" height="5" fill="black"/>
+                            <rect x="60" y="60" width="5" height="5" fill="black"/>
+                            
+                            <rect x="35" y="65" width="5" height="5" fill="black"/>
+                            <rect x="45" y="65" width="5" height="5" fill="black"/>
+                            <rect x="55" y="65" width="5" height="5" fill="black"/>
+                            <rect x="65" y="65" width="5" height="5" fill="black"/>
+                            
+                            <rect x="75" y="35" width="5" height="5" fill="black"/>
+                            <rect x="75" y="45" width="5" height="5" fill="black"/>
+                            <rect x="75" y="55" width="5" height="5" fill="black"/>
+                            <rect x="75" y="65" width="5" height="5" fill="black"/>
+                            
+                            <rect x="35" y="75" width="5" height="5" fill="black"/>
+                            <rect x="45" y="75" width="5" height="5" fill="black"/>
+                            <rect x="55" y="75" width="5" height="5" fill="black"/>
+                            <rect x="65" y="75" width="5" height="5" fill="black"/>
+                            <rect x="75" y="75" width="5" height="5" fill="black"/>
+                        </svg>
+                    </div>
+                    <p>Scan for offline submission</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

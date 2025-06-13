@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card</title>
+    <style>
+      * {
+        margin: 0px;
+        height: 0px;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .card {
+        width: 300px;
+        height: 450px;
+        background-color: rgba(72, 118, 218, 0.815);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+        align-items: center;
+        padding: 20px;
+      }
+    .card img{
+        border-radius: 15px;
+        width: 250px;
+        height: 250px;
+    }
+    .card h2{
+        text-align: center;
+        color: rgba(255, 255, 255, 0.913);
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .card p{
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.913);
+        text-align: center;
+    }   
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <img
+          src="https://thumbs.dreamstime.com/b/vector-icon-qr-code-simple-design-logo-sticker-your-website-application-vector-icon-qr-code-simple-flat-176987051.jpg"
+          alt="qr_code"
+        />
+        <h2>Improve your front end skills by developing skills</h2>
+        <br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo provident laudantium id asperiores quaerat magni in possimus</p>
+
+      </div>
+    </div>
+  </body>
+</html>

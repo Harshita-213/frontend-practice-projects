@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: linear-gradient(to bottom right, #ffecd242, #f1754c52);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    overflow: none; 
+    /* border: 1px solid black; */
+}
+
+nav{
+    width: 100%;
+    margin: 15px;
+}
+
+#navItems{
+    display: flex;
+    gap: 40px;   
+    transition: transform 0.3s ease 0s;
+}
+
+#navItems a:hover{
+    transform: scale(1.03) rotate(-2deg);
+    text-shadow: 1px 1px 3.5px rgba(0, 0, 0, 0.251);
+}
+
+#navLogo:hover{
+    transform: scale(1.03) rotate(-2deg) ;
+    text-shadow: 1px 1px 3.5px rgba(0, 0, 0, 0.251);
+}
+
+.navContainer{
+    width: 100vw;
+    background: #e96443;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #904e95, #e96443);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #904e95, #e96443); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 700;
+    font-style: normal;
+}
+
+#navList{
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navLogo{
+    font-size: 1.5rem;
+    color:azure;
+    transition: transform 0.3s ease 0s;
+}
+
+a{
+    text-decoration: none;
+    color: azure;
+}
+
+.footerBox{
+    background: #e96443;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #904e95, #e96443);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #904e95, #e96443); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100%;
+    text-align: center;
+    min-height: 40px;
+}
+
+.footerBox p{
+    color: rgba(240, 255, 255, 0.941);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.contentBox{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding: 3rem;
+}
+
+.item{
+    display: flex;
+    justify-content: space-around;
+}
+
+.leftBox{
+    margin-left: 45px;
+}
+
+.rightBox{
+    position: relative;
+    transition: all 0.3 linear 0s;
+}
+
+.rightBox img{
+    width: 250px;
+    border-radius: 20px;
+}
+.rightBox:hover{
+    transform: scale(1.03);
+}
+
+.ingBox{
+    font-size: 1.1rem;
+}
+
+.rightBox .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 250px;
+    width: 250px;
+    border-radius: 20px;
+    background-color: rgba(1, 1, 1, 0.511);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.6s linear 0s;
+}
+.rightBox:hover .overlay{
+    opacity: 1;
+}
+
+.rightBox .overlay span{
+    color: white;
+    font-size: 1.1rem;
+}
+
+.recipeBox{
+    text-align: justify;
+    width: 80%;
+    font-size: 1.1rem;
+}
+.leftBox h2{
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2rem;
+}
+
+/* #mainHead{
+
+} */
+
+

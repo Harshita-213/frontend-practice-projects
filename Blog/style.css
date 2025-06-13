@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    max-width: 80vw;
+    padding: 2rem, 1rem;
+    margin: 0 auto;
+}
+.header_container{
+    margin-bottom: 2.8rem;
+}
+.header_title{
+    margin-bottom: 1rem;
+    font-size: 1.7rem; 
+    line-height: 2rem;
+    font-weight:900;
+    text-align: center;
+}
+.header_desc{
+    text-align: center;
+    max-width: 568px;
+    color: rgb(144, 143, 143);
+    margin: 0 auto;
+}
+.main_container{
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4,1fr);
+    justify-content: center;
+}
+.card_container{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(128, 128, 128, 0.753);
+    border-radius: 8px;
+}
+.card_img_container{
+    position: relative;
+    overflow: hidden;
+    height: 7rem;
+}
+.card_image{
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.card_title_container{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+  
+}
+.card_container:hover .card_image{
+    transform: scale(1.1);
+    transition-duration: 200ms;
+}
+.card_title{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: black;
+    line-height: 1.5rem;
+}
+.card_title:hover{
+    color: blueviolet;
+}
+
+.card_desc{
+    color: rgb(59, 53, 53);
+    font-size: 0.8rem;
+    
+}
+.card_footer_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 1.5rem;
+    padding-bottom: 1.5rem;
+}
+.author_container{
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+}
+.author_avatar_container{
+    height: 2.2rem;
+    width: 2.2rem;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.415);
+    border-radius: 50%;
+    background-color: rgba(241, 235, 235, 0.762);
+}
+.author_info_container{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+}
+.author_name{
+    color: blueviolet;
+    font-weight: 300;
+}
+.date{
+    color: rgba(59, 53, 53, 0.675);
+}
+.card_tag_container{
+    font-size: 0.8rem;
+    border: 1px solid rgb(166, 164, 164);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    line-height: 1.3rem;
+    color: grey;
+}
