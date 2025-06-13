@@ -33,6 +33,15 @@ A UI component for a mock payment system showing:
 
 ---
 
+### 🔹 4. Exam Portal UI
+A mock exam portal interface showcasing form elements, navigation bar, and input handling basics.
+
+---
+
+### 🔹 5. Recipe Website Layout
+ A multi-section landing page layout with recipe previews, buttons, and header design.
+ 
+
 ## 🚀 Tech Stack
 
 - **HTML5**
