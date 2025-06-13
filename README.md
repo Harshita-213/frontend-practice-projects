@@ -23,8 +23,6 @@ A clean blog layout displaying cards with:
 - Neat typography and visual hierarchy  
 > Practiced **CSS Grid, Flexbox**, and semantic HTML.
 
-![Blog Screenshot](relative/path/or/full/github/url)
-
 ---
 
 ### 📌 3. QR Code Card – *Card 1*
@@ -34,8 +32,6 @@ A minimal QR code component featuring:
 - Clean typography and spacing  
 > Focused on **basic card layout and center alignment** using Flexbox.
 
-![Card 1 Screenshot](relative/path/or/full/github/url)
-
 ---
 
 ### 📌 4. Order Summary Card – *Card 2*
@@ -44,8 +40,6 @@ A UI component for a mock payment system showing:
 - Interactive buttons (Change Plan, Proceed to Payment)
 - Rounded card styling with subtle shadows  
 > Practiced component layout, spacing, and **CSS button styles**.
-
-![Card 2 Screenshot](relative/path/or/full/github/url)
 
 ---
 
